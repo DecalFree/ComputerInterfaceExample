@@ -1,23 +1,10 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using ComputerInterface;
 using ComputerInterface.Extensions;
-using ComputerInterface.Interfaces;
 using ComputerInterface.ViewLib;
 
 namespace ComputerInterfaceExample.Views;
-
-// A selectable entry on the MainMenuView.
-// Entries are automatically detected by ComputerInterface.
-public class ExampleViewEntry : IComputerModEntry {
-    // The name of the entry that will be shown.
-    public string EntryName => "Example";
-    
-    // The first view that the user is going to see when selecting your entry.
-    public Type EntryViewType => typeof(ExampleView);
-}
-
-public class ExampleView : ComputerView {
+public class ExampleHelpView : ComputerView {
     // Called when the view is opened by the user.
     public override void OnShow(object[] args) {
         base.OnShow(args);
@@ -33,11 +20,11 @@ public class ExampleView : ComputerView {
         
         // Uses the top of the screen to showoff what tab you are currently on.
         stringBuilder.BeginCenter().Repeat("=", SCREEN_WIDTH).AppendLine();
-        stringBuilder.Append("Example Tab").AppendLine();
+        stringBuilder.Append("Example Tab Info").AppendLine();
         stringBuilder.Repeat("=", SCREEN_WIDTH).EndAlign().AppendLines(2);
         
         // Makes text below the "titlebar".
-        stringBuilder.AppendLine("Computer Interface Example!");
+        stringBuilder.AppendLine("Computer Interface Help Example!");
         
         Text = stringBuilder.ToString();
     }
@@ -46,12 +33,8 @@ public class ExampleView : ComputerView {
     public override void OnKeyPressed(EKeyboardKey key) {
         switch (key) {
             case EKeyboardKey.Back:
-                // 'ReturnToMainMenu();' is used to return to the MainMenuView.
-                ReturnToMainMenu();
-                break;
-            case EKeyboardKey.Option1:
-                // 'ShowView<TargetView>();' can be used to switch to another view.
-                ShowView<ExampleHelpView>();
+                // 'ReturnView();' will go back to the last opened view.
+                ReturnView();
                 break;
         }
     }
