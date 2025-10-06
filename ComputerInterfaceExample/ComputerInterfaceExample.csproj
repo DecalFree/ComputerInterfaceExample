@@ -12,7 +12,7 @@
     </Target>
 
     <PropertyGroup>
-        <GamePath>C:\Program Files (x86)\Steam\steamapps\common\Gorilla Tag</GamePath>
+        <GamePath>/home/decalfree/.local/share/Steam/steamapps/common/Gorilla Tag</GamePath>
         <GameAssemblyPath>$(GamePath)\Gorilla Tag_Data\Managed</GameAssemblyPath>
         <BepInExAssemblyPath>$(GamePath)\BepInEx\core</BepInExAssemblyPath>
         <PluginsPath>$(GamePath)\BepInEx\plugins</PluginsPath>
@@ -26,7 +26,7 @@
         <HintPath>$(BepInExAssemblyPath)\BepInEx.dll</HintPath>
       </Reference>
       <Reference Include="ComputerInterface">
-        <HintPath>$(PluginsPath)\ToniMacaroni's Mods\ComputerInterface\ComputerInterface.dll</HintPath>
+        <HintPath>$(PluginsPath)\ToniMacaroni's Mods\ComputerInterface.dll</HintPath>
       </Reference>
       <Reference Include="UnityEngine">
         <HintPath>$(GameAssemblyPath)\UnityEngine.dll</HintPath>

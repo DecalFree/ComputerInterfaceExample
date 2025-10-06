@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Text;
-using ComputerInterface;
+using ComputerInterface.Enumerations;
 using ComputerInterface.Extensions;
 using ComputerInterface.Interfaces;
-using ComputerInterface.ViewLib;
+using ComputerInterface.Models;
 
 namespace ComputerInterfaceExample.Views;
 
@@ -32,9 +32,9 @@ public class ExampleView : ComputerView {
         var stringBuilder = new StringBuilder();
         
         // Uses the top of the screen to showoff what tab you are currently on.
-        stringBuilder.BeginCenter().Repeat("=", SCREEN_WIDTH).AppendLine();
+        stringBuilder.BeginCenter().Repeat("=", ScreenWidth).AppendLine();
         stringBuilder.Append("Example Tab").AppendLine();
-        stringBuilder.Repeat("=", SCREEN_WIDTH).EndAlign().AppendLines(2);
+        stringBuilder.Repeat("=", ScreenWidth).EndAlign().AppendLines(2);
         
         // Makes text below the "titlebar".
         stringBuilder.AppendLine("Computer Interface Example!");

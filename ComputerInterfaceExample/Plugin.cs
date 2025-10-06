@@ -9,8 +9,7 @@ public class Plugin : BaseUnityPlugin {
     public Plugin() {
         GorillaTagger.OnPlayerSpawned(delegate {
             try {
-                // Calls the 'Initialize' method in ExampleCommandManager.
-                new ExampleCommandManager().Initialize();
+                // Other code for mod...
             }
             catch (Exception exception) {
                 Logger.LogError($"Failed to load {Constants.Name}: {exception}");

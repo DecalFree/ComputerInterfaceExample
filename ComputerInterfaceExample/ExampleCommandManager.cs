@@ -1,18 +1,19 @@
-﻿using ComputerInterface;
+﻿using ComputerInterface.Behaviours;
+using ComputerInterface.Interfaces;
 
 namespace ComputerInterfaceExample;
 
-public class ExampleCommandManager {
+public class ExampleCommandManager : ICommandRegistrar {
     private CommandHandler _commandHandler;
     
     public void Initialize() {
         // Request the CommandHandler.
-        _commandHandler = ComputerInterface.Plugin.CommandHandler;
+        _commandHandler = CommandHandler.Singleton;
 
         RegisterCommands();
     }
 
-    private void RegisterCommands() {
+    public void RegisterCommands() {
         // Register your commands.
         
         // You can set 'argumentTypes' to null if you aren't going to have any.
