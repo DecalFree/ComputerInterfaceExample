@@ -3,9 +3,9 @@ using BepInEx;
 
 namespace ComputerInterfaceExample;
 
-[BepInDependency("tonimacaroni.computerinterface", "1.8.0")]
+[BepInDependency("tonimacaroni.computerinterface", "2.0.0")]
 [BepInPlugin(Constants.Guid, Constants.Name, Constants.Version)]
-public class Plugin : BaseUnityPlugin {
+internal class Plugin : BaseUnityPlugin {
     public Plugin() {
         GorillaTagger.OnPlayerSpawned(delegate {
             try {

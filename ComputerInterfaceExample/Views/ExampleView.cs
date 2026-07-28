@@ -9,48 +9,45 @@ namespace ComputerInterfaceExample.Views;
 
 // A selectable entry on the MainMenuView.
 // Entries are automatically detected by ComputerInterface.
-public class ExampleViewEntry : IComputerModEntry {
+public class ExampleViewEntry : IComputerViewEntry {
     // The name of the entry that will be shown.
     public string EntryName => "Example";
-    
+
     // The first view that the user is going to see when selecting your entry.
-    public Type EntryViewType => typeof(ExampleView);
+    public Type EntryComputerView => typeof(ExampleView);
 }
 
 public class ExampleView : ComputerView {
-    // Called when the view is opened by the user.
-    public override void OnShow(object[] args) {
-        base.OnShow(args);
-        
-        // A 'Redraw' method is usually made for easier reading.
-        Redraw();
+    // This function is completely optional now due to text for a ComputerView now automatically being updated when switching views.
+    // An example this can be used for is setting a UITextInputHandler's text to 'string.Empty' when the view is shown.
+    public override void OnViewShown(object[] arguments) {
     }
-    
-    // The method that usually handles the text on the screen.
-    private void Redraw() {
+
+    // This method is NEEDED as it handles the text that will be on the computer's screen.
+    protected override string GetViewText() {
         // A StringBuilder is usually made for easy text making.
-        var stringBuilder = new StringBuilder();
-        
+        StringBuilder stringBuilder = new StringBuilder();
+
         // Uses the top of the screen to showoff what tab you are currently on.
         stringBuilder.BeginCenter().Repeat("=", ScreenWidth).AppendLine();
         stringBuilder.Append("Example Tab").AppendLine();
         stringBuilder.Repeat("=", ScreenWidth).EndAlign().AppendLines(2);
-        
+
         // Makes text below the "titlebar".
         stringBuilder.AppendLine("Computer Interface Example!");
-        
-        Text = stringBuilder.ToString();
+
+        return stringBuilder.ToString();
     }
 
-    // When a key on the keyboard is pressed, the key pressed is sent back as a parameter to be used.
-    public override void OnKeyPressed(EKeyboardKey key) {
-        switch (key) {
-            case EKeyboardKey.Back:
-                // 'ReturnToMainMenu();' is used to return to the MainMenuView.
+    // When a button on the keyboard is pressed, the button pressed is sent back as a parameter to be used.
+    public override void OnButtonPressed(EKeyboardButton pressedButton) {
+        switch (pressedButton) {
+            case EKeyboardButton.Back:
+                // 'ReturnToMainMenu()' is used to return to the MainMenuView.
                 ReturnToMainMenu();
                 break;
-            case EKeyboardKey.Option1:
-                // 'ShowView<TargetView>();' can be used to switch to another view.
+            case EKeyboardButton.Option1:
+                // 'ShowView<TargetView>()' can be used to switch to another view.
                 ShowView<ExampleHelpView>();
                 break;
         }
