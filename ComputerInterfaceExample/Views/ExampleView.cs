@@ -8,7 +8,7 @@ using ComputerInterface.Models;
 namespace ComputerInterfaceExample.Views;
 
 // A selectable entry on the MainMenuView.
-// Entries are automatically detected by ComputerInterface.
+// Entries are automatically detected by Computer Interface.
 public class ExampleViewEntry : IComputerViewEntry {
     // The name of the entry that will be shown.
     public string EntryName => "Example";
