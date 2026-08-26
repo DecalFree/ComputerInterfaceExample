@@ -3,7 +3,7 @@ using BepInEx;
 
 namespace ComputerInterfaceExample;
 
-[BepInDependency("tonimacaroni.computerinterface", "2.0.0")]
+[BepInDependency("tonimacaroni.computerinterface", "2.1.0")]
 [BepInPlugin(Constants.Guid, Constants.Name, Constants.Version)]
 internal class Plugin : BaseUnityPlugin {
     public Plugin() {
